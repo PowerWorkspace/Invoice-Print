@@ -1,0 +1,20 @@
+# ===== 构建产物 / 发布输出 =====
+dist/
+fapiao_merge_*/
+*.exe
+
+# ===== 临时文件 =====
+_word_tmp/
+_rot_test.png
+_test_dir.aardio
+__pycache__/
+*.pyc
+
+# ===== aardio 本地备份 =====
+*.aardio.bak
+
+# ===== aardio 构建缓存目录 =====
+.build/
+
+# ===== WorkBuddy 项目内部数据（含个人记忆/日志，勿入库） =====
+.workbuddy/

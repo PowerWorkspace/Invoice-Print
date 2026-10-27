@@ -1,0 +1,829 @@
+//发票合并打印
+import win.ui;
+import win.ui.menu;
+/*DSG{{*/
+mainForm = win.form(text="发票合并打印";right=778;bottom=613;border="dialog frame";max=false)
+mainForm.add(
+btnNext={cls="button";text=">";left=733;top=133;right=753;bottom=203;border=1;font=LOGFONT(h=-18;weight=700);z=62};
+btnPrev={cls="button";text="<";left=391;top=133;right=411;bottom=203;border=1;font=LOGFONT(h=-18;weight=700);z=61};
+button={cls="button";text="合并后下载";left=82;top=540;right=285;bottom=591;bgcolor=0xFF0000;border=1;font=LOGFONT(weight=700);image=$"\res\hbhxz.jpg";z=47};
+button2={cls="button";text="恢复默认";left=677;top=279;right=737;bottom=299;z=46};
+button3={cls="button";text="合并后打印";left=454;top=569;right=704;bottom=602;bgcolor=0x0000FF;border=1;font=LOGFONT(weight=700);image=$"\res\hbhdy.jpg";z=53};
+button4={cls="button";text="上传";left=161;top=91;right=206;bottom=126;bgcolor=0xFFFF00;border=1;image=$"\res\ftp.jpg";z=63};
+checkbox={cls="checkbox";text="外边距也画线";left=536;top=502;right=636;bottom=522;z=44};
+checkbox2={cls="checkbox";text="跳过空白页";left=649;top=502;right=749;bottom=522;z=45};
+combobox={cls="combobox";left=253;top=210;right=337;bottom=230;edge=1;items={};mode="dropdown";z=9};
+combobox2={cls="combobox";left=493;top=311;right=737;bottom=331;edge=1;items={};mode="dropdown";z=14};
+combobox3={cls="combobox";left=493;top=344;right=567;bottom=364;edge=1;items={};mode="dropdown";z=16};
+combobox4={cls="combobox";left=457;top=473;right=559;bottom=493;edge=1;items={};mode="dropdown";z=40};
+combobox5={cls="combobox";left=469;top=540;right=629;bottom=560;edge=1;items={};mode="dropdown";z=54};
+edit={cls="edit";text="1";left=664;top=540;right=699;bottom=560;align="center";edge=1;num=1;z=59};
+edit2={cls="edit";text="8";left=503;top=408;right=538;bottom=428;align="center";edge=1;num=1;z=25};
+edit3={cls="edit";text="4";left=611;top=408;right=646;bottom=428;align="center";edge=1;num=1;z=28};
+edit4={cls="edit";text="0";left=528;top=441;right=563;bottom=461;align="center";edge=1;num=1;z=31};
+edit5={cls="edit";text="0";left=585;top=441;right=620;bottom=461;align="center";edge=1;num=1;z=33};
+edit6={cls="edit";text="0";left=646;top=441;right=681;bottom=461;align="center";edge=1;num=1;z=35};
+edit7={cls="edit";text="0";left=702;top=441;right=737;bottom=461;align="center";edge=1;num=1;z=37};
+groupbox={cls="groupbox";text="文件选择";left=18;top=76;right=377;bottom=182;edge=1;z=3};
+groupbox2={cls="groupbox";text="文件列表";left=18;top=191;right=377;bottom=531;edge=1;z=6};
+groupbox3={cls="groupbox";text="设置";left=392;top=257;right=756;bottom=531;edge=1;z=12};
+groupbox4={cls="groupbox";text="页面预览";left=390;top=50;right=754;bottom=251;edge=1;z=48};
+groupbox5={cls="groupbox";text="Power Tools Series";left=9;top=8;right=770;bottom=610;color=0xFF0000;edge=1;font=LOGFONT(weight=700);z=1};
+listview={cls="listview";left=18;top=237;right=377;bottom=530;edge=1;fullRow=1;z=11};
+preview={cls="plus";left=414;top=69;right=730;bottom=249;z=57};
+radiobutton={cls="radiobutton";text="纵向";left=611;top=344;right=666;bottom=364;checked=1;group=1;z=17};
+radiobutton2={cls="radiobutton";text="横向";left=686;top=344;right=741;bottom=364;z=18};
+radiobutton3={cls="radiobutton";text="等比缩放";left=488;top=376;right=558;bottom=396;checked=1;group=1;z=20};
+radiobutton4={cls="radiobutton";text="拉伸填充";left=575;top=376;right=645;bottom=396;z=21};
+radiobutton5={cls="radiobutton";text="原始尺寸";left=662;top=376;right=732;bottom=396;z=22};
+radiobutton6={cls="radiobutton";text="虚线";left=636;top=473;right=681;bottom=493;checked=1;group=1;z=42};
+radiobutton7={cls="radiobutton";text="实线";left=690;top=473;right=735;bottom=493;z=43};
+spin={cls="spin";left=702;top=540;right=722;bottom=560;z=60};
+static={cls="static";text="发票合并打印工具";left=66;top=29;right=336;bottom=61;align="center";center=1;font=LOGFONT(h=-16;weight=700);transparent=1;z=2};
+static12={cls="static";text="缩放模式";left=403;top=376;right=473;bottom=396;center=1;font=LOGFONT(weight=700);transparent=1;z=19};
+static13={cls="static";text="份";left=103;top=210;right=131;bottom=230;align="center";center=1;transparent=1;z=50};
+static17={cls="static";text="默认版式：A4 · 每页 2 张（2×1）";left=403;top=279;right=616;bottom=299;center=1;transparent=1;z=23};
+static18={cls="static";text="页边距/间距";left=403;top=408;right=479;bottom=428;center=1;font=LOGFONT(weight=700);transparent=1;z=24};
+static19={cls="static";text="mm";left=545;top=408;right=571;bottom=428;align="center";center=1;transparent=1;z=26};
+static2={cls="static";text="把发票 PDF/图片 拖到这里";left=128;top=134;right=280;bottom=153;transparent=1;z=4};
+static20={cls="static";text="/";left=579;top=408;right=605;bottom=428;align="center";center=1;transparent=1;z=27};
+static21={cls="static";text="mm";left=653;top=408;right=679;bottom=428;align="center";center=1;transparent=1;z=29};
+static22={cls="static";text="裁剪空白边(mm)";left=403;top=441;right=513;bottom=461;center=1;font=LOGFONT(weight=700);transparent=1;z=30};
+static23={cls="static";text="上";left=502;top=441;right=528;bottom=461;align="center";center=1;transparent=1;z=32};
+static24={cls="static";text="下";left=562;top=441;right=585;bottom=461;align="center";center=1;transparent=1;z=34};
+static25={cls="static";text="左";left=619;top=441;right=645;bottom=461;align="center";center=1;transparent=1;z=36};
+static26={cls="static";text="右";left=680;top=441;right=706;bottom=461;align="center";center=1;transparent=1;z=38};
+static27={cls="static";text="裁切线";left=403;top=473;right=473;bottom=493;center=1;font=LOGFONT(weight=700);transparent=1;z=39};
+static28={cls="static";text="线型";left=593;top=473;right=619;bottom=493;align="center";center=1;font=LOGFONT(weight=700);transparent=1;z=41};
+static3={cls="static";text="或 点击                 · 支持一次多选、 仅支持 .pdf/.jpg/.png";left=31;top=156;right=372;bottom=178;center=1;transparent=1;z=5};
+static31={cls="static";text="0";left=128;top=210;right=143;bottom=230;align="center";center=1;transparent=1;z=51};
+static34={cls="static";text="张发票页";left=145;top=210;right=202;bottom=230;align="center";center=1;transparent=1;z=52};
+static35={cls="static";text="打印机";left=428;top=540;right=468;bottom=560;center=1;transparent=1;z=55};
+static36={cls="static";text="选择文件";left=75;top=156;right=125;bottom=178;align="center";center=1;color=0xFF3E00;notify=1;transparent=1;z=56};
+static37={cls="static";text="份数";left=636;top=539;right=661;bottom=559;center=1;transparent=1;z=58};
+static4={cls="static";text="待合并发票";left=27;top=210;right=93;bottom=230;center=1;transparent=1;z=7};
+static5={cls="static";text="顺序";left=221;top=210;right=251;bottom=230;center=1;transparent=1;z=8};
+static6={cls="static";text="清空";left=340;top=210;right=370;bottom=230;align="center";border=1;center=1;color=0x0000FF;notify=1;transparent=1;z=10};
+static7={cls="static";text="0";left=93;top=210;right=108;bottom=230;align="center";center=1;transparent=1;z=49};
+static8={cls="static";text="纸张选择";left=403;top=311;right=473;bottom=331;center=1;font=LOGFONT(weight=700);transparent=1;z=13};
+static9={cls="static";text="每页发票数量";left=403;top=344;right=493;bottom=364;center=1;font=LOGFONT(weight=700);transparent=1;z=15}
+)
+/*}}*/
+
+//---------------- 导入库 ----------------
+import gdip;
+import sys.printer;
+import fsys;
+import fsys.dlg;
+import io;
+import process;
+
+//---------------- 全局状态 ----------------
+var fileItems = {};          // { path,name,pages,seq,mtime }
+var seqCounter = 0;          // 上传顺序计数
+// workDir 用相对路径经 io.fullpath 统一解析成绝对路径。createDir/mutool/io.popen 全部使用同一个绝对路径,
+// 避免 io.tmpdir 为 null、fsys.getCurDir 指向非项目目录导致的相对/绝对不一致问题。
+var workDir = ..io.fullpath("fapiao_merge_" + tostring(time(), "%Y%m%d%H%M%S") + "\");
+fsys.createDir(workDir);
+var mutoolExe = null;        // mutool 绝对路径
+var composedPages = null;    // 整页 gdip.bitmap 数组
+var previewBmp = null;       // 当前预览整页位图
+var previewIndex = 1;        // 预览当前页码
+var renderCache = {};        // 渲染缓存: [path] = { mtime, pngs },文件未变则复用,避免设置变化时重复调用mutool渲染
+
+// 纸张定义: { 宽mm, 高mm, dmPaperSize }
+var papers = {
+	["A4 (210x297)"] = {210,297,9/*_DMPAPER_A4*/};
+	["A5 (148x210)"] = {148,210,11/*_DMPAPER_A5*/};
+	["B5 (176x250)"] = {176,250,13/*_DMPAPER_B5*/};
+};
+
+// 每页数量 -> 网格(行,列) 规则(纵向)。用户确认:1→1x1,2→2行1列,3→3行1列,4→2x2,6→3x2,8→4x2,9→3x3。横向时行列对调。
+var gridMap = {
+	[1]={1,1}; [2]={2,1}; [3]={3,1}; [4]={2,2};
+	[6]={3,2}; [8]={4,2}; [9]={3,3};
+};
+
+//---------------- mutool 引擎管理 ----------------
+var getMutool = function(){
+	if(mutoolExe and fsys.exists(mutoolExe)) return mutoolExe;
+	// 用 $"\res\..." 编译期嵌入获取 mutool 字节,发布独立EXE时随EXE打包;
+	// 运行时写入绝对工作目录后直接运行,避免 io.popen 相对路径与工作目录不匹配。
+	var dst = workDir + "mutool.exe";
+	if(!fsys.exists(dst)){
+		var data = $"\res\mutool.exe";  // 编译期嵌入资源,发布独立EXE时随EXE打包,避免运行时res缺失
+		if(!data){
+			mainForm.msgboxErr("缺少 PDF 渲染组件 mutool.exe，请确认软件资源完整。");
+			return null;
+		}
+		..string.save(dst, data);
+		if(!fsys.exists(dst)){
+			mainForm.msgboxErr("无法写入 mutool.exe，请检查工作目录权限。");
+			return null;
+		}
+	}
+	mutoolExe = dst;
+	return dst;
+};
+
+// 运行命令并返回全部输出(同步等待完成)
+var runCmd = function(cmd){
+	var p = io.popen(cmd);
+	var out = "";
+	if(p){
+		out = p.read(-1);
+		p.close();
+	}
+	return out;
+};
+
+// 直接启动 mutool(不经过 cmd shell,避免 %d 与嵌套引号被 shell 破坏),并等待执行完成。
+// workdir 作为 mutool 的工作目录,因此输出用相对路径即可写进 workdir,不受 io.popen 工作目录影响。
+var runMutool = function(params, workdir){
+	if(!workdir) workdir = workDir;
+	process.execute(mutoolExe, params, "open", 0, workdir, null, "close", 60000);
+};
+
+//---------------- PDF 页信息 ----------------
+var getPageCount = function(pdfPath){
+	var ext = ..string.lower(..string.match(pdfPath, "\.(\w+)$") or "");
+	if(ext != "pdf") return 1; // 图片文件(jpg/png)视为单页
+	var exe = getMutool();
+	if(!exe) return 1;
+	var out = runCmd('"' + exe + '" info "' + pdfPath + '"');
+	var n = ..string.match(out, "Pages:\s*(\d+)");
+	return tonumber(n) or 1;
+};
+
+// 渲染 PDF 所有页为 PNG(150dpi),生成 baseName-1.png ... 返回每页文件路径数组
+var renderFilePages = function(pdfPath, baseName, dpi){
+	var ext = ..string.lower(..string.match(pdfPath, "\.(\w+)$") or "");
+	if(ext != "pdf") return { [1] = pdfPath }; // 图片文件直接作为一页
+	var exe = getMutool();
+	if(!exe) return {};
+	// 用 process.execute 直接启动 mutool,workDir 作为其工作目录,输出相对路径即落在 workDir
+	runMutool('draw -o "' + baseName + '-%d.png" -r ' + dpi + ' "' + pdfPath + '"', workDir);
+	var pages = {};
+	var i = 1;
+	while(true){
+		var f = workDir + baseName + "-" + i + ".png";
+		if(!fsys.exists(f)) break;
+		pages[i] = f;
+		i++;
+	}
+	return pages;
+};
+
+// 按 dpi 渲染/取用缓存页(baseName 含 dpi 后缀,避免不同分辨率文件互相覆盖)
+var getRenderPages = function(path, mtime, baseName, dpi){
+	var cached = renderCache[path];
+	if(cached and cached.mtime == mtime and cached[dpi]) return cached[dpi];
+	var pngs = renderFilePages(path, baseName, dpi);
+	if(!cached) cached = { mtime = mtime };
+	cached[dpi] = pngs;
+	renderCache[path] = cached;
+	return pngs;
+};
+
+// 检测页面是否空白(非白像素比例 < 0.5%)
+var isBlankPage = function(pngPath){
+	var bmp = gdip.bitmap(pngPath);
+	if(!bmp) return false;
+	var small = bmp.getThumbnail(64,64);
+	bmp.delete();
+	if(!small) return false;
+	var d = small.lockData32();
+	var total = 0, nonWhite = 0;
+	var rows = d.bits.rows;
+	for(i=1; #rows; 1){
+		var pixels = rows[i].pixels;
+		for(j=1; #pixels; 1){
+			total++;
+			var p = pixels[j];
+			var r = (p >> 16) & 0xFF;
+			var g = (p >> 8) & 0xFF;
+			var b = p & 0xFF;
+			if(r < 250 or g < 250 or b < 250) nonWhite++;
+		}
+	}
+	small.unlockData(d);
+	small.delete();
+	return (nonWhite <= total * 0.005);
+};
+
+//---------------- 读取设置 ----------------
+var getSettings = function(renderDpi){
+	var s = {};
+	s.dpi = renderDpi or 150;
+	var comboText = function(c){ var v = c.items[c.selIndex]; return v ? v : ""; };
+	var paperKey = comboText(mainForm.combobox2);
+	s.paper = papers[paperKey] or papers["A4 (210x297)"];
+	s.perPage = tonumber(comboText(mainForm.combobox3)) or 2;
+	if(s.perPage < 1) s.perPage = 1; if(s.perPage > 9) s.perPage = 9;
+	s.orient = mainForm.radiobutton.checked ? "纵向" : "横向";
+	if(mainForm.radiobutton3.checked) s.scaleMode = "fit";
+	elseif(mainForm.radiobutton4.checked) s.scaleMode = "stretch";
+	else s.scaleMode = "original";
+	var cutKey = comboText(mainForm.combobox4);
+	if(cutKey == "不画") s.cutMode = "none";
+	elseif(cutKey == "格子虚线框") s.cutMode = "grid";
+	else s.cutMode = "through"; // 贯穿分割线
+	s.lineType = mainForm.radiobutton6.checked ? "dash" : "solid";
+	s.drawOuter = mainForm.checkbox.checked;
+	s.skipBlank = mainForm.checkbox2.checked;
+	s.margin = tonumber(mainForm.edit2.text) or 8;
+	s.gap = tonumber(mainForm.edit3.text) or 4;
+	s.cropTop = tonumber(mainForm.edit4.text) or 0;
+	s.cropBottom = tonumber(mainForm.edit5.text) or 0;
+	s.cropLeft = tonumber(mainForm.edit6.text) or 0;
+	s.cropRight = tonumber(mainForm.edit7.text) or 0;
+	s.copies = tonumber(mainForm.edit.text) or 1;
+	if(s.copies < 1) s.copies = 1;   // 份数最小为 1
+	// 换算像素
+	s.paperWpx = ..math.floor(s.paper[1] / 25.4 * s.dpi + 0.5);
+	s.paperHpx = ..math.floor(s.paper[2] / 25.4 * s.dpi + 0.5);
+	s.marginPx = s.margin / 25.4 * s.dpi;
+	s.gapPx = s.gap / 25.4 * s.dpi;
+	s.cropTpx = s.cropTop / 25.4 * s.dpi;
+	s.cropBpx = s.cropBottom / 25.4 * s.dpi;
+	s.cropLpx = s.cropLeft / 25.4 * s.dpi;
+	s.cropRpx = s.cropRight / 25.4 * s.dpi;
+	// 网格:横向时交换行列,并交换纸张宽高像素让纸张真正横过来
+	var g = gridMap[s.perPage] or {1,1};
+	if(s.orient == "横向") {
+		s.rows = g[2]; s.cols = g[1];
+		var pw = s.paperWpx; s.paperWpx = s.paperHpx; s.paperHpx = pw;
+	}
+	else { s.rows = g[1]; s.cols = g[2]; }
+	return s;
+};
+
+//---------------- 排序 ----------------
+var sortFiles = function(){
+	var sortMode = mainForm.combobox.items[mainForm.combobox.selIndex];
+	var list = {};
+	for(i=1; #fileItems; 1){
+		var it = fileItems[i];
+		if(it) list[#list + 1] = it;   // 跳过空位,避免排序比较器收到 null
+	}
+	if(sortMode == "按文件名"){
+		..table.sort(list, function(a,b){
+			if(!a or !b) return false;
+			return ..string.lower(a.name) < ..string.lower(b.name);
+		});
+	}
+	elseif(sortMode == "按修改时间"){
+		..table.sort(list, function(a,b){
+			if(!a or !b) return false;
+			return a.mtime < b.mtime;
+		});
+	}
+	// 按上传顺序:保持 seq 升序
+	else{
+		..table.sort(list, function(a,b){
+			if(!a or !b) return false;
+			return a.seq < b.seq;
+		});
+	}
+	return list;
+};
+
+//---------------- 列表刷新与统计 ----------------
+var refreshList = function(){
+	var sorted = sortFiles();
+	mainForm.listview.clear();
+	for(i=1; #sorted; 1){
+		var it = sorted[i];
+		mainForm.listview.addItem({i, it.name});
+	}
+	// 统计
+	var totalPages = 0;
+	for(i=1; #sorted; 1) totalPages += sorted[i].pages;
+	mainForm.static7.text = #sorted;           // 份
+	mainForm.static31.text = totalPages;        // 张发票页
+};
+
+//---------------- 网格绘制 ----------------
+var drawInvoice = function(g, bmp, x, y, cw, ch, s){
+	var srcW = bmp.width;
+	var srcH = bmp.height;
+	var scw = srcW - s.cropLpx - s.cropRpx;
+	var sch = srcH - s.cropTpx - s.cropBpx;
+	if(scw <= 0 or sch <= 0) return;
+	if(s.scaleMode == "stretch"){
+		g.drawImageRectRect(bmp, x, y, cw, ch, s.cropLpx, s.cropTpx, scw, sch);
+	}
+	elseif(s.scaleMode == "fit"){
+		var sc = ..math.min(cw / scw, ch / sch);
+		var dw = scw * sc; var dh = sch * sc;
+		var dx = x + (cw - dw) / 2; var dy = y + (ch - dh) / 2;
+		g.drawImageRectRect(bmp, dx, dy, dw, dh, s.cropLpx, s.cropTpx, scw, sch);
+	}
+	else{ // original 原始尺寸
+		var dx = x + (cw - scw) / 2; var dy = y + (ch - sch) / 2;
+		g.drawImageRectRect(bmp, dx, dy, scw, sch, s.cropLpx, s.cropTpx, scw, sch);
+	}
+};
+
+var drawCutLines = function(g, rows, cols, cellW, cellH, margin, gap, pw, ph, s){
+	if(s.cutMode == "none") return;
+	var pen = gdip.pen(0xFF000000, 1, 2/*_GdipUnitPixel*/);
+	if(s.lineType == "dash") pen.dashStyle = 2/*_GdipDashStyleDash*/;
+	if(s.cutMode == "through"){
+		for(i=1; rows-1; 1){
+			var y = margin + i * cellH + i * gap;
+			g.drawLine(pen, 0, y, pw, y);
+		}
+		for(j=1; cols-1; 1){
+			var x = margin + j * cellW + j * gap;
+			g.drawLine(pen, x, 0, x, ph);
+		}
+		if(s.drawOuter) g.drawRect(pen, 0, 0, pw, ph);
+	}
+	elseif(s.cutMode == "grid"){
+		for(i=1; rows; 1){
+			for(j=1; cols; 1){
+				var x = margin + (j-1) * (cellW + gap);
+				var y = margin + (i-1) * (cellH + gap);
+				g.drawRect(pen, x, y, cellW, cellH);
+			}
+		}
+	}
+	pen.delete();
+};
+
+// 生成顺时针旋转90°的位图(宽高互换),用于发票方向按纸张方向与网格旋转
+var rotateBitmap90 = function(bmp){
+	var w = bmp.width, h = bmp.height;
+	var rb = gdip.bitmap(h, w);
+	var rg = gdip.graphics(rb);
+	rg.clear(0xFFFFFFFF);
+	rg.setTransform(0, 1, -1, 0, h, 0);   // x' = h - y, y' = x  → 顺时针90°
+	rg.drawImage(bmp, 0, 0);
+	rg.delete();
+	return rb;
+};
+
+// 合成一张整页(子页列表<=每页数量)。返回 gdip.bitmap
+var composeOnePage = function(subList, s){
+	if(#subList == 0) return null;
+	var bmp = gdip.bitmap(s.paperWpx, s.paperHpx);
+	var g = gdip.graphics(bmp);
+	g.clear(0xFFFFFFFF);
+	var contentW = s.paperWpx - 2 * s.marginPx;
+	var contentH = s.paperHpx - 2 * s.marginPx;
+	var cellW = (contentW - s.gapPx * (s.cols - 1)) / s.cols;
+	var cellH = (contentH - s.gapPx * (s.rows - 1)) / s.rows;
+	for(i=1; #subList; 1){
+		var row = ..math.floor((i - 1) / s.cols) + 1;
+		var col = ((i - 1) % s.cols) + 1;
+		var x = s.marginPx + (col - 1) * (cellW + s.gapPx);
+		var y = s.marginPx + (row - 1) * (cellH + s.gapPx);
+		var b = gdip.bitmap(subList[i]);
+		if(b){
+			// 发票方向:正方形网格(行=列)→发票长边沿纸张长边,纵向竖放/横向横放
+			// 非正方形(2/3/6/8)→发票长边沿纸张短边,纵向横放/横向竖放
+			var paperLongH = (s.paperWpx > s.paperHpx);
+			var squareGrid = (s.perPage == 1 or s.perPage == 4 or s.perPage == 9);
+			var targetLongH;
+			if(squareGrid){
+				targetLongH = paperLongH;
+			}else {
+				targetLongH = !paperLongH;
+			}
+			var invoiceLongH = (b.width > b.height);
+			var needRotate = (invoiceLongH != targetLongH);
+			if(needRotate){
+				var rb = rotateBitmap90(b);
+				// 旋转后裁剪边距随之旋转(顺时针90°): 新上=原左,新下=原右,新左=原下,新右=原上
+				var ot=s.cropTpx, ob=s.cropBpx, ol=s.cropLpx, orr=s.cropRpx;
+				s.cropTpx=ol; s.cropBpx=orr; s.cropLpx=ob; s.cropRpx=ot;
+				drawInvoice(g, rb, x, y, cellW, cellH, s);
+				s.cropTpx=ot; s.cropBpx=ob; s.cropLpx=ol; s.cropRpx=orr;
+				rb.delete();
+				b.delete();
+			}
+			else{
+				drawInvoice(g, b, x, y, cellW, cellH, s);
+				b.delete();
+			}
+		}
+	}
+	drawCutLines(g, s.rows, s.cols, cellW, cellH, s.marginPx, s.gapPx, s.paperWpx, s.paperHpx, s);
+	g.delete();
+	return bmp;
+};
+
+//---------------- 预览翻页:单页显示 + 页码指示 ----------------
+var showPreviewPage = function(idx){
+	if(!composedPages or #composedPages == 0){
+		previewBmp = null;
+		previewIndex = 1;
+		mainForm.preview.redraw();
+		return;
+	}
+	if(idx < 1) idx = 1;
+	if(idx > #composedPages) idx = #composedPages;
+	previewIndex = idx;
+	previewBmp = composedPages[previewIndex];
+	mainForm.preview.redraw();
+};
+
+//---------------- 核心:渲染+合成+预览 ----------------
+// 按当前设置构建整页位图数组(不修改预览全局),用于预览与高清晰度输出
+var buildComposed = function(s){
+	if(#fileItems == 0) return null;
+	var sorted = sortFiles();
+	var allPages = {};  // 扁平化所有页 pngPath
+	for(fi=1; #sorted; 1){
+		var it = sorted[fi];
+		var key = it.path;
+		var pngs = getRenderPages(key, it.mtime, "f" + fi + "_" + s.dpi, s.dpi);
+		for(pi=1; #pngs; 1){
+			allPages[#allPages + 1] = pngs[pi];
+		}
+	}
+	// 跳过空白页
+	var pages = {};
+	for(i=1; #allPages; 1){
+		var f = allPages[i];
+		if(s.skipBlank and isBlankPage(f)) continue;
+		pages[#pages + 1] = f;
+	}
+	// 按每页数量分组合成
+	var out = {};
+	var group = {};
+	var k = 0;
+	for(i=1; #pages; 1){
+		k++;
+		group[k] = pages[i];
+		if(k == s.perPage){
+			var pageBmp = composeOnePage(group, s);
+			if(pageBmp) out[#out + 1] = pageBmp;
+			group = {}; k = 0;
+		}
+	}
+	if(k > 0){
+		var pageBmp = composeOnePage(group, s);
+		if(pageBmp) out[#out + 1] = pageBmp;
+	}
+	return out;
+};
+
+//---------------- 核心:渲染+合成+预览 ----------------
+var rebuild = function(){
+	// 释放旧位图
+	if(composedPages){
+		for(i=1; #composedPages; 1) composedPages[i].delete();
+		composedPages = null;
+	}
+	if(previewBmp){
+		// previewBmp 只是 composedPages[1] 的别名,已在上面遍历中 delete 释放,这里只置空避免二次释放
+		previewBmp = null;
+	}
+	if(#fileItems == 0){
+		showPreviewPage(1);
+		return;
+	}
+	composedPages = buildComposed(getSettings());
+	// 预览第一页
+	showPreviewPage(1);
+};
+
+//---------------- 预览绘制 ----------------
+mainForm.preview.onDrawBackground = function(graphics, rc, backgroundColor, color){
+	graphics.clear(0xFFFFFFFF);
+	if(!previewBmp) return;
+	// 四周留白:两侧放翻页按钮(< >),底部放页码指示(x / N),避免图片盖住它们
+	var l = 26, r = 26, t = 6, b = 28;
+	var ix = rc.left + l;
+	var iy = rc.top + t;
+	var iw = (rc.right - rc.left) - l - r;
+	var ih = (rc.bottom - rc.top) - t - b;
+	if(iw < 10 or ih < 10) return;
+	var bw = previewBmp.width or 1;
+	var bh = previewBmp.height or 1;
+	var scale = math.min(iw / bw, ih / bh);
+	if(scale <= 0) scale = 1;
+	var w = bw * scale;
+	var h = bh * scale;
+	var dx = ix + (iw - w) / 2;
+	var dy = iy + (ih - h) / 2;
+	graphics.drawImageScale(previewBmp, { left = dx; top = dy; right = dx + w; bottom = dy + h });
+	// 纸张边界:在图像四周画淡色外框
+	var pen = ..gdip.pen(0xFFB0B0B0, 1);
+	graphics.drawRect(pen, dx - 1, dy - 1, w + 2, h + 2);
+	pen.delete();
+	// 底部页码指示(随预览图一起绘制,稳定显示不闪现)
+	if(#composedPages > 0){
+		var str = previewIndex + " / " + #composedPages;
+		var font = ..gdip.font("微软雅黑", 12);
+		var brush = ..gdip.solidBrush(0xFF404040);
+		var strW = #str * 7;   // 估算文本宽度以便水平居中
+		var tx = (rc.left + rc.right - strW) / 2;
+		var ty = rc.bottom - 26;
+		graphics.drawString(str, font, tx, ty, brush);
+		font.delete();
+		brush.delete();
+	}
+};
+
+//---------------- 文件添加/清空 ----------------
+var addFiles = function(files){
+	var added = 0;
+	for(i=1; #files; 1){
+		var path = files[i];
+		var ext = ..string.lower(..string.match(path, "\.(\w+)$") or "");
+		// 仅支持 pdf / jpg / jpeg / png
+		if(ext != "pdf" and ext != "jpg" and ext != "jpeg" and ext != "png") continue;
+		var name = ..fsys.getFileName(path);
+		// 去重
+		var dup = false;
+		for(j=1; #fileItems; 1) if(..string.lower(fileItems[j].path) == ..string.lower(path)) { dup = true; break; }
+		if(dup) continue;
+		seqCounter++;
+		var ft = ..fsys.getTime(path);
+		fileItems[#fileItems + 1] = {
+			path = path;
+			name = name;
+			pages = (ext == "pdf") ? 0 : 1;   // PDF 页数稍后安全计算
+			seq = seqCounter;
+			mtime = (ft and ft.write) or "";
+		};
+		added++;
+	}
+	if(added > 0){
+		// 第一步:立即刷新列表,确保文件先进入列表(不依赖渲染引擎)
+		refreshList();
+		// 第二步:安全计算 PDF 页数(失败不阻断列表)
+		for(i=1; #fileItems; 1){
+			if(fileItems[i].pages == 0){
+				try{
+					fileItems[i].pages = getPageCount(fileItems[i].path);
+				}catch(e){
+					fileItems[i].pages = 1;
+				}
+			}
+		}
+		refreshList();
+		rebuild();
+	}
+	else{
+		mainForm.msgbox("未添加新文件（仅支持 .pdf/.jpg/.png，重复文件已忽略）");
+	}
+};
+
+var clearFiles = function(){
+	fileItems = {};
+	seqCounter = 0;
+	renderCache = {};
+	refreshList();
+	rebuild();
+};
+
+// 打开文件选择
+var pickFiles = function(){
+	var files = fsys.dlg.openMulti("支持的文件|*.pdf;*.jpg;*.jpeg;*.png|PDF文件|*.pdf|图片文件|*.jpg;*.jpeg;*.png|", "选择要合并的发票（PDF/图片）", null, mainForm);
+	if(files and #files > 0) addFiles(files);
+};
+
+//---------------- 单选互斥 ----------------
+var setOrient = function(mode){
+	mainForm.radiobutton.checked = (mode == 1);
+	mainForm.radiobutton2.checked = (mode == 2);
+};
+var setScale = function(mode){
+	mainForm.radiobutton3.checked = (mode == "fit");
+	mainForm.radiobutton4.checked = (mode == "stretch");
+	mainForm.radiobutton5.checked = (mode == "original");
+};
+var setLine = function(mode){
+	mainForm.radiobutton6.checked = (mode == "dash");
+	mainForm.radiobutton7.checked = (mode == "solid");
+};
+
+//---------------- 事件绑定 ----------------
+// 拖放
+mainForm.onDropFiles = function(files){
+	addFiles(files);
+};
+
+// 点击选择文件(拖放区图标与文字)
+mainForm.button4.oncommand = function(id,event){
+	pickFiles();
+};
+mainForm.static36.oncommand = function(id,event){
+	if(event == 0/*STN_CLICKED*/) pickFiles();
+};
+mainForm.static6.oncommand = function(id,event){
+	if(event == 0/*STN_CLICKED*/) clearFiles();
+};
+
+// 顺序下拉:重排
+mainForm.combobox.oncommand = function(id,event){
+	refreshList();
+	rebuild();
+};
+
+// 纸张/每页数量/裁切线/线型 变化
+mainForm.combobox2.oncommand = function(id,event){ rebuild(); };
+mainForm.combobox3.oncommand = function(id,event){ rebuild(); };
+mainForm.combobox4.oncommand = function(id,event){ rebuild(); };
+
+// 方向
+mainForm.radiobutton.oncommand = function(id,event){ setOrient(1); rebuild(); };
+mainForm.radiobutton2.oncommand = function(id,event){ setOrient(2); rebuild(); };
+// 缩放
+mainForm.radiobutton3.oncommand = function(id,event){ setScale("fit"); rebuild(); };
+mainForm.radiobutton4.oncommand = function(id,event){ setScale("stretch"); rebuild(); };
+mainForm.radiobutton5.oncommand = function(id,event){ setScale("original"); rebuild(); };
+// 线型
+mainForm.radiobutton6.oncommand = function(id,event){ setLine("dash"); rebuild(); };
+mainForm.radiobutton7.oncommand = function(id,event){ setLine("solid"); rebuild(); };
+
+// listview 右键菜单:删除所选文件
+mainForm.popmenu = win.ui.popmenu(mainForm);
+mainForm.popmenu.add('删除所选文件', function(id){
+	var selIndex = mainForm.listview.selIndex;
+	var sorted = sortFiles();
+	var it = sorted[selIndex];
+	if(!it) return;
+	// 列表显示的是排序后的顺序,需按 seq 反查 fileItems 原下标再删除
+	for(i=1; #fileItems; 1){
+		if(fileItems[i].seq == it.seq){
+			renderCache[fileItems[i].path] = null;   // 清理该文件的渲染缓存
+			..table.remove(fileItems, i);
+			break;
+		}
+	}
+	refreshList();
+	rebuild();
+});
+mainForm.listview.onnotify = function(id, code, ptr){
+	if(code == 0xFFFFFFFB/*_NM_RCLICK*/) mainForm.popmenu.popup();
+};
+
+// 边距/裁剪/份数 文本框
+mainForm.edit2.oncommand = function(id,event){ rebuild(); };
+mainForm.edit3.oncommand = function(id,event){ rebuild(); };
+mainForm.edit4.oncommand = function(id,event){ rebuild(); };
+mainForm.edit5.oncommand = function(id,event){ rebuild(); };
+mainForm.edit6.oncommand = function(id,event){ rebuild(); };
+mainForm.edit7.oncommand = function(id,event){ rebuild(); };
+mainForm.edit.oncommand = function(id,event){
+	rebuild();
+	mainForm.spin.pos = tonumber(mainForm.edit.text) or 1;   // 手动输入后与 spin 保持同步
+};
+// 复选
+mainForm.checkbox.oncommand = function(id,event){ rebuild(); };
+mainForm.checkbox2.oncommand = function(id,event){ rebuild(); };
+
+//---------------- 翻页 ----------------
+
+mainForm.btnPrev.oncommand = function(id,event){ if(event == 0/*STN_CLICKED*/) showPreviewPage(previewIndex - 1); };
+mainForm.btnNext.oncommand = function(id,event){ if(event == 0/*STN_CLICKED*/) showPreviewPage(previewIndex + 1); };
+
+//---------------- 下载(合并为 PDF) ----------------
+mainForm.button.oncommand = function(id,event){
+	if(!composedPages or #composedPages == 0){
+		mainForm.msgbox("请先添加发票文件");
+		return;
+	}
+	var savePath = fsys.dlg.saveOp("PDF文件|*.pdf|", "保存合并后的 PDF", null, mainForm, "合并打印.pdf");
+	if(!savePath) return;
+	// 高清晰度输出:用 300dpi 重建整页,确保合并后下载保持发票原始清晰度
+	var outPages = buildComposed(getSettings(300));
+	if(!outPages or #outPages == 0){
+		mainForm.msgboxErr("输出页构建失败");
+		return;
+	}
+	// 保存整页 PNG
+	var pngs = {};
+	for(i=1; #outPages; 1){
+		var pngPath = workDir + "outpage" + i + ".png";
+		outPages[i].save(pngPath);
+		pngs[i] = pngPath;
+	}
+	for(i=1; #outPages; 1) outPages[i].delete();
+	// mutool convert 合成 PDF
+	var exe = getMutool();
+	if(!exe) return;
+	var args = "";
+	for(i=1; #pngs; 1) args += ' "' + pngs[i] + '"';
+	runMutool('convert -o "' + savePath + '" -F pdf' + args, workDir);
+	if(fsys.exists(savePath)){
+		mainForm.msgbox('合并完成，已保存:\n' + savePath);
+	}
+	else{
+		mainForm.msgboxErr("保存失败，请检查输出路径与 mutool 引擎。");
+	}
+};
+
+//---------------- 打印 ----------------
+mainForm.button3.oncommand = function(id,event){
+	if(!composedPages or #composedPages == 0){
+		mainForm.msgbox("请先添加发票文件");
+		return;
+	}
+	// 高清晰度输出:打印使用 300dpi 重建整页,保持发票原始清晰度
+	var outPages = buildComposed(getSettings(300));
+	if(!outPages or #outPages == 0){
+		mainForm.msgboxErr("输出页构建失败");
+		return;
+	}
+	var s = getSettings(300);
+	var printerName = mainForm.combobox5.text;
+	var printer = sys.printer(printerName);
+	if(!printer){
+		for(i=1; #outPages; 1) outPages[i].delete();
+		mainForm.msgboxErr("无法打开打印机" + (printerName ? "：" + printerName : ""));
+		return;
+	}
+	var pdc = printer.createDevice(
+		dmPaperSize = s.paper[3];
+		dmOrientation = (s.orient == "纵向") ? 1 : 2;
+		dmCopies = s.copies;
+	);
+	if(!pdc){
+		for(i=1; #outPages; 1) outPages[i].delete();
+		mainForm.msgboxErr("创建设备失败");
+		return;
+	}
+	for(i=1; #outPages; 1){
+		var bmp = outPages[i];
+		pdc.start(function(hdc, rc){
+			var g = gdip.graphics(hdc);
+			g.pageUnit = 2/*_UnitPixel*/;
+			g.drawImageStretch(bmp, rc);
+			g.delete();
+		}, "发票合并打印");
+	}
+	pdc.close();
+	for(i=1; #outPages; 1) outPages[i].delete();
+	mainForm.msgbox("打印完成，共 " + #outPages + " 页");
+};
+
+//---------------- 恢复默认 ----------------
+var resetSettings = function(){
+	mainForm.combobox.selIndex = 1;            // 按文件名
+	mainForm.combobox2.selIndex = 1;           // A4
+	mainForm.combobox3.selIndex = 2;           // 2
+	mainForm.combobox4.selIndex = 1;           // 贯穿分割线
+	mainForm.edit.text = "1";
+	mainForm.spin.pos = 1;   // 与 spin 同步
+	mainForm.edit2.text = "8";
+	mainForm.edit3.text = "4";
+	mainForm.edit4.text = "0";
+	mainForm.edit5.text = "0";
+	mainForm.edit6.text = "0";
+	mainForm.edit7.text = "0";
+	setOrient(1);
+	setScale("fit");
+	setLine("dash");
+	mainForm.checkbox.checked = false;
+	mainForm.checkbox2.checked = true;
+	rebuild();
+};
+mainForm.button2.oncommand = function(id,event){
+	resetSettings();
+};
+
+//---------------- 初始化界面 ----------------
+mainForm.combobox.items = {"按文件名","按上传顺序","按修改时间"};
+mainForm.combobox.selIndex = 1;
+mainForm.combobox2.items = {"A4 (210x297)","A5 (148x210)","B5 (176x250)"};
+mainForm.combobox2.selIndex = 1;
+mainForm.combobox3.items = {"1","2","3","4","6","8","9"};
+mainForm.combobox3.selIndex = 2;
+mainForm.combobox4.items = {"贯穿分割线","格子虚线框","不画"};
+mainForm.combobox4.selIndex = 1;
+mainForm.checkbox2.checked = true;
+setOrient(1);
+setScale("fit");
+setLine("dash");
+// spin 微调:绑定"份数"文本框,范围 1~99,步长 1(必须先 setRange 再绑定 buddy,绑定会把当前值写入文本框)
+mainForm.spin.setRange(1, 99);
+mainForm.spin.buddy = mainForm.edit;
+mainForm.spin.inc = 1;
+
+// 枚举打印机
+var printers = {};
+var idx = 0;
+var defIdx = 0;
+var defPrinter = sys.printer.default();
+for pname, sname, attrs in sys.printer.each(){
+	idx++;
+	printers[idx] = pname;
+	if(pname == defPrinter) defIdx = idx;
+}
+mainForm.combobox5.items = printers;
+mainForm.combobox5.selIndex = (defIdx > 0) ? defIdx : 1;
+
+// listview 列
+mainForm.listview.insertColumn("序号", 40);
+mainForm.listview.insertColumn("文件名称", 270);
+
+mainForm.show();
+win.loopMessage();
+// 退出时清理本次生成的临时工作目录(内含 mutool 副本与渲染页),避免残留堆积
+if(workDir and ..fsys.exists(workDir)) ..fsys.delete(workDir);
